@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+
+    <title></title>
+</head>
+<body>
+
+<div id="countainer"></div>
+<div id="countainer2"></div>
+<div id="countainer3"></div>
+<div id="countainer4"></div>
+<script type="text/javascript">
+    var chart;
+
+    function draw(){
+        var options = {
+            chart: {renderTo: "countainer"},
+            title: {text: "円周率のやつ"},
+            xAxis: {title: {text: "桁数"}},
+            yAxis: {title: {text: "数値"}},
+
+            series: [
+                {name: "pi", data: [10,2,8,2,7]},
+                {name: "nepier", data: [2,7,1,8,2]},
+                {name: "testes", data: [1,2,3,4,5], type: "column"}
+            ]
+        }
+
+        jQuery.get("data/data.csv", function(content){
+            content = content.split(",");
+            for(var i=0; i < content.length; i++){
+                content[i] = Number(content[i]);
+            }
+            console.log(content);
+            options["series"].push({name: "tes", data: content});
+            chart = new Highcharts.Chart(options);
+        });
+
+        var options2 = {
+            chart: {
+                renderTo: "countainer2",
+                type: "column"
+            },
+            title: {text: "円周率のやつ"},
+            xAxis: {title: {text: "桁数"}},
+            yAxis: {title: {text: "数値"}},
+
+            series: [
+                {name: "pi", data: [10,2,8,2,7]},
+                {name: "nepier", data: [2,7,1,8,2]}
+            ]
+        }
+
+        jQuery.get("data/data.csv", function(content){
+            content = content.split(",");
+            for(var i=0; i < content.length; i++){
+                content[i] = Number(content[i]);
+            }
+            options2["series"].push({name: "tes", data: content});
+            chart = new Highcharts.Chart(options2);
+        });
+
+        var options3 = {
+            chart: {
+                renderTo: "countainer3",
+                type: "bar"
+            },
+            title: {text: "円周率のやつ"},
+            xAxis: {title: {text: "桁数"}},
+            yAxis: {title: {text: "数値"}},
+
+            series: [
+                {name: "pi", data: [10,2,8,2,7]},
+                {name: "nepier", data: [2,7,1,8,2]}
+            ]
+        }
+
+        jQuery.get("data/data.csv", function(content){
+            content = content.split(",");
+            for(var i=0; i < content.length; i++){
+                content[i] = Number(content[i]);
+            }
+            options3["series"].push({name: "tes", data: content});
+            chart = new Highcharts.Chart(options3);
+        });
+
+
+
+    }
+
+    document.body.onload = draw();
+</script>
+
+</body>
+</html>
