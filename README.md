@@ -1,4 +1,4 @@
-highChart.js使ってグラフ作成
+highchart.js使ってグラフ作成
 
 とんがりを見つける
 
