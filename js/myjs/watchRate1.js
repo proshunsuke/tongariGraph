@@ -42,7 +42,7 @@ window.onload = function(){
                 chartDataX.push(parseFloat(items[0]));
                 chartData.push(parseFloat(items[1]));
             }
-            options.series.push({name: "視聴率", data: chartData});
+            options.series =[{name: "視聴率", data: chartData}];
             options.xAxis.categories = chartDataX;
             inputStartEnd(chartData);
             plotStart(mStart);
@@ -143,14 +143,12 @@ window.onload = function(){
         $("select[name=csv]").change(function(){
             csvData = $("select[name=csv]").children(':selected').attr("value");
             options.title.text = $("select[name=csv]").children(':selected').html();
-
             initGraph();
             createGraphFromCsv("data/"+csvData);
         });
     }
 
     let initGraph = function(){
-        options.series = [];
         options.xAxis.plotLines = [];
         mStart = [];
         mEnd = [];
